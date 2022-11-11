@@ -1,0 +1,113 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+
+@{
+    ViewData["Title"] = "Store";
+}
+<style>
+    .filter{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between:
+    }
+    .product-info a{
+        text-decoration: none !important;
+    }
+    .wrapper {
+      height: 420px;
+      width: 654px;
+      margin: 50px auto;
+      border-radius: 7px 7px 7px 7px;
+      box-shadow: 0 0 30px 0 #999;
+    }
+
+    .product-img {
+      float: left;
+      height: 420px;
+      width: 327px;
+    }
+
+    .product-img img {
+      border-radius: 7px 0 0 7px;
+    }
+
+    .product-info {
+      float: left;
+      height: 420px;
+      width: 327px;
+      border-radius: 0 7px 10px 7px;
+      background-color: #ffffff;
+    }
+
+    .product-text {
+      height: 300px;
+      width: 327px;
+    }
+
+    .product-text h1 {
+      margin: 0 0 0 38px;
+      padding-top: 52px;
+      font-size: 34px;
+      color: #474747;
+    }
+
+
+
+    .product-text h2 {
+      margin: 0 0 47px 38px;
+      font-size: 13px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+    .product-text .desc{
+        height:120px;
+        margin-left: 10px;
+    }
+
+</style>
+
+
+
+<div class="container">
+    
+<form asp-action="Index" class="col-2 my-1 p-2">
+    <div>
+        <p class="text-success">Filter search</p>
+        <div class="my-1">
+            <input type="text" name="searchString" placeholder="Title or Author" class="form-control-sm col-12" />
+        </div>
+        <div class="my-1">
+            <input type="number" name="minPrice" step="1" placeholder="$min" class="form-control-sm col-5" />&nbsp;&#8212;&nbsp;<input type="number" name="maxPrice" step="1" placeholder="$max" class="form-control-sm col-5" />
+        </div>
+        <input type="submit" value="Filter" class="btn btn-primary btn-sm" />
+        <a asp-action="Index" class="btn btn-secondary btn-sm float-right">Clear</a>
+    </div>
+</form>
+<hr />
+<div class="container">
+    @foreach(var book in Model)
+    {
+        <div class="wrapper">
+           
+            <div class="product-img">
+                <img src="@book.ImageUrl" height="420" width="327">
+            </div>
+            <div class="product-info">
+                    
+                <div class="product-text">
+                    <h1>@book.Title</h1>
+                    <h2>By @book.Author</h2>
+                    <div class="desc">
+                     <p class="text-secondary" style="text-size:0.8rem; ">@book.Description</p>
+                     <p class="text-success h3">@book.Price.ToString("c")</p>
+                    </div>
+
+                </div>
+                <div class="product-price-btn text-center">
+                    <a class="btn btn-primary" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@book.Id">Add to Cart <i class="fa-solid fa-cart-plus"></i></a>
+                    <a class="btn btn-info" asp-controller="Store" asp-action="Details" asp-route-id="@book.Id">Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

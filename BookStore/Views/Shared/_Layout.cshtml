@@ -1,0 +1,274 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using BookStore.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookStore</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BookStore.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/myCss.css" />
+    <style>
+        
+.contact_section {
+    padding-top: 10px;
+    height: 100vh;
+    background-color: #f5f6f9;
+    display:flex;
+    flex:1;
+    aling-items: center;
+}
+.contact_section h2 {
+    margin-bottom: 45px;
+}
+
+.contact_section form {
+    padding-right: 35px;
+}
+
+.contact_section input {
+    width: 100%;
+    border: 0;
+    height: 50px;
+    border-radius: 25px;
+    margin-bottom: 25px;
+    padding-left: 25px;
+    outline: none;
+    color: #101010;
+    background: #f1f1f1;
+ 
+
+}
+
+    .contact_section input::-webkit-input-placeholder {
+        color: #131313;
+    }
+
+    .contact_section input:-ms-input-placeholder {
+        color: #131313;
+    }
+
+    .contact_section input::-ms-input-placeholder {
+        color: #131313;
+    }
+
+    .contact_section input::placeholder {
+        color: #131313;
+    }
+
+    .contact_section input.message-box {
+        height: 120px;
+        border-radius: 15px;
+    }
+
+.contact_section .btn-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 10px;
+}
+
+.contact_section button {
+    display: inline-block;
+    padding: 12px 45px;
+    background-color: #44b89d;
+    color: #ffffff;
+    border-radius: 45px;
+    border: 1px solid #44b89d;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+    .contact_section button:hover {
+        background-color: transparent;
+        color: #44b89d;
+    }
+
+.contact_section .img-box img {
+    width: 100%;
+}
+
+    </style>
+</head>
+<body>
+
+
+
+<header>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow">
+  <!-- Container wrapper -->
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+     <!-- Navbar brand -->
+    <a class="navbar-brand mt-2 mt-lg-0" asp-area="" asp-controller="Home" asp-action="Index">
+        <img src="/images/index.png" alt="Brand Logo" style="width:60px;" class="rounded-pill">  
+    </a>
+ 
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapsenavbar-collapse collapse d-sm-inline-flex justify-content-between" id="navbarSupportedContent">
+     
+      <!-- Left links -->
+      <ul class="navbar-nav flex-grow-1 me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Store" asp-action="Index">Store</a>
+        </li>
+        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+        {
+                <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Index">Books</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ListAllRoles">Roles</a>
+            </li>
+        }
+                       
+                       
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" id="#Contact">Contact Us</a>
+        </li>
+      </ul>
+      
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+
+    <!-- Right elements -->
+    <div class="d-flex align-items-center">
+      <!-- Icon -->
+     
+        <a class="nav-link text-dark float-right" asp-area="" asp-controller="Cart" asp-action="Index"><i class="fa fa-cart-shopping"></i></a>
+        <partial name="_LoginPartial.cshtml" />
+    </div>
+    <!-- Right elements -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+</header>
+    <div class="container">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+     <!-- contact section -->
+
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="heading_container ">
+            <h2 class="">
+              Contact Us
+            </h2>
+          </div>
+          <form action="#">
+            <div>
+              <input type="text" placeholder="Name" />
+            </div>
+            <div>
+              <input type="email" placeholder="Email" />
+            </div>
+            <div>
+              <input type="text" placeholder="Pone Number" />
+            </div>
+            <div>
+              <input type="text" class="message-box" placeholder="Message" />
+            </div>
+            <div class="btn-box">
+              <button>
+                SEND
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="images/contact-img.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end contact section -->
+    <footer class="bg-light text-white text-center text-lg-start border-top mb-0">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase text-dark">About Us</h5>
+
+        <p class="text-dark">
+          Bookstore is a place to find your dream book to read. Find your favorite book and share with others.
+        </p>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase text-info">Links</h5>
+
+        <ul class="list-unstyled mb-0">
+          <li>
+           <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+          </li>
+          <li>
+           <a class="nav-link text-dark" asp-area="" asp-controller="Store" asp-action="Index">Store</a>
+          </li>
+          <li>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4 text-info">Contact</h6>
+          <p class="text-dark"><i class="fas fa-home me-3"></i> Bhaktapur, NY 10012, Nepal</p>
+          <p class="text-dark">
+            <i class="fas fa-envelope me-3"></i>
+            bookstore@example.com
+          </p>
+          <p class="text-dark"><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p class="text-dark"><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3 bg-dark">
+    <div class="container">
+            &copy; 2022 - BookStore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+  </div>
+  <!-- Copyright -->
+</footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

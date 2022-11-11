@@ -1,0 +1,182 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    .hero-section {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #f5f6f9;
+    position: relative;
+    height: 100vh;
+    width:100%;
+
+}
+
+    .hero-section .row {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .hero-section #customCarousel1 {
+        width: 100%;
+        position: unset;
+    }
+
+    .hero-section .detail-box h5 {
+        color: #44b89d;
+    }
+
+    .hero-section .detail-box h1 {
+        font-weight: bold;
+        margin-bottom: 25px;
+        line-height: 58px;
+        font-size: 3rem;
+    }
+
+    .hero-section .detail-box a {
+        display: inline-block;
+        padding: 10px 45px;
+        background-color: #44b89d;
+        color: #ffffff;
+        border-radius: 45px;
+        border: 1px solid #44b89d;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        margin-top: 15px;
+    }
+
+        .hero-section .detail-box a:hover {
+            background-color: transparent;
+            color: #44b89d;
+        }
+
+    .hero-section .img-box img {
+        width: 100%;
+    }
+
+
+.about_section {
+  position: relative;
+  background-color: ##FFFFFF;
+  height: 100vh;
+  display: flex;
+  flex: 1;
+  align-items:center;
+
+}
+
+.about_section .row {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.about_section .img-box img {
+  width: 100%;
+}
+
+.about_section .detail-box p {
+  margin-top: 15px;
+}
+
+.about_section .detail-box a {
+  display: inline-block;
+  padding: 10px 45px;
+  background-color: #44b89d;
+  color: #ffffff;
+  border-radius: 45px;
+  border: 1px solid #44b89d;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  margin-top: 15px;
+}
+
+.about_section .detail-box a:hover {
+  background-color: transparent;
+  color: #44b89d;
+}
+.hero{
+    width: 100%;
+}
+
+</style>
+    <!-- slider section -->
+    <div class="hero">
+        <section class="hero-section">
+
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h5>
+                      BookStore
+                    </h5>
+                    <h1>
+                      For All Your <br>
+                      Reading Needs
+                    </h1>
+                    <p>
+                      Bookstore is a place to find your dream book to read. Find your favorite book and share with others.
+                    </p>
+                    <a class="nav-link text-dark btn btn-outline-primary" asp-area="" asp-controller="Store" asp-action="Index">Store</a>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="images/slider-img.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end slider section -->
+
+
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding">
+    <div class="container ">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="images/about-img.png" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                About Our Bookstore
+              </h2>
+            </div>
+            <p>
+              At cumque tenetur iste molestiae, vel eum reiciendis assumenda! Numquam, repudiandae. Consequuntur obcaecati recusandae aliquam, amet doloribus eius dolores officiis cumque? Quibusdam praesentium pariatur sapiente mollitia, amet hic iusto voluptas! Iusto quo earum vitae excepturi, ipsam aliquid deleniti assumenda culpa deserunt.
+            </p>
+             <a class="nav-link text-dark btn btn-outline-primary" asp-area="" asp-controller="Store" asp-action="Index">Store</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+
+    </div>
+           

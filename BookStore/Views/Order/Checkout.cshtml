@@ -1,0 +1,22 @@
+﻿@model Order
+
+<style>
+    .checkout{
+        height: 60vh;
+        margin: 10px 20px;
+        text-align:center;
+
+    }
+</style>
+<div class=" text-center checkout row">
+    <form asp-action="Checkout" method="post" class="form-horizontal" role="form">
+    <h4>Please confirm your purchase</h4>
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" class="btn btn-primary" value="Complete Order" />
+        </div>
+    </div>
+</form>
+</div>
